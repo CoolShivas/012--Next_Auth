@@ -15,3 +15,5 @@ const connectDB = async () => {
 };
 
 export default connectDB;
+
+// // // // MongoDB connected successfully..!
