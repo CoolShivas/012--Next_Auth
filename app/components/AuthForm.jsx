@@ -1,10 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import { FaSignInAlt, FaUserPlus } from "react-icons/fa";
+import {
+  FaSignInAlt,
+  FaUserPlus,
+  FaUser,
+  FaEnvelope,
+  FaLock,
+} from "react-icons/fa";
 
 const AuthForm = () => {
   const [isLogIn, setIsLogIn] = useState(true); // True, you will see Login Page;
-  // const [isLogIn, setIsLogIn] = useState(false); // False, you will see Signup Page;
+  //const [isLogIn, setIsLogIn] = useState(false); // False, you will see Signup Page;
   return (
     <>
       <div className="container d-flex justify-content-center align-items-center vh-100">
@@ -20,6 +26,64 @@ const AuthForm = () => {
             )}
             <h2 className="fw-bold">{isLogIn ? "Log-In" : "Sign-Up"}</h2>
           </div>
+          <hr />
+          <form>
+            {/* Starting of Name Input */}
+            <div className="mb-3 input-group">
+              <span className="input-group-text">
+                <FaUser className="text-primary" />
+              </span>
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                required
+                className="form-control"
+              />
+            </div>
+            {/* Ending of Name Input */}
+            {/* Starting of Email Input */}
+            <div className="mb-3 input-group">
+              <span className="input-group-text">
+                <FaEnvelope className="text-success" />
+              </span>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+                className="form-control"
+              />
+            </div>
+            {/* Ending of Email Input */}
+            {/* Starting of Password Input */}
+            <div className="mb-3 input-group">
+              <span className="input-group-text">
+                <FaLock className="text-danger" />
+              </span>
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+                className="form-control"
+              />
+            </div>
+            {/* Ending of Password Input */}
+            {/* Starting of Button */}
+            <button type="submit" className="btn w-100">
+              Login & Signup
+            </button>
+            {/* Ending of Button */}
+            {/* Starting of Para */}
+            <p
+              className="text-center mt-3 text-primary"
+              style={{ cursor: "pointer" }}
+            >
+              Create an account | Already have an account
+            </p>
+            {/* Ending of Para */}
+          </form>
         </div>
       </div>
     </>
