@@ -75,3 +75,95 @@ export const register = async (request) => {
 }
  * 
  */
+
+///////************************************************************************* *////
+///////************************************************************************* *////
+
+// // // // // Login the User to save the data on database and retrieve it afterwards;
+export const login = async (request) => {
+  const { email, password } = await request.json();
+
+  try {
+    let user = await User.findOne({ email });
+
+    if (!user) {
+      return NextResponse.json({ message: "User not exist", success: false });
+    } else {
+      const validPassword = await bcrypt.compare(password, user.password);
+      if (!validPassword) {
+        return NextResponse.json({
+          message: "Invalid Credentials",
+          success: false,
+        });
+      } else {
+        return NextResponse.json({
+          message: `Welcome back ${user.name}`,
+          user,
+        });
+      }
+    }
+  } catch (error) {
+    return NextResponse.json({ message: "Server Error", error: error.message });
+  }
+};
+// // // // Open the Thunder Client the make a POST request enter url(http://localhost:3000/api/auth?login=true)
+// // // // Make a body such as
+/**
+ * {
+  "email":"arjun@gmail.com",
+  "password":"12003123"
+}
+ * 
+ */
+// // // // Then hit the send button you will get the response as
+// // // // Status: 200 OK    Size: 301 Bytes     Time: 293 ms
+/**
+ * 
+ *{
+  "message": "Welcome back arjun",
+  "user": {
+    "_id": "68bfce8737da4fa754238485",
+    "name": "arjun",
+    "email": "arjun@gmail.com",
+    "password": "$2b$10$odLSbxyqwArp/k0kphdWRefYJeGEeIBqlzkeDO2OlHHAdVp4fbaum",
+    "createdAt": "2025-09-09T06:51:51.685Z",
+    "updatedAt": "2025-09-09T06:51:51.685Z",
+    "__v": 0
+  }
+}
+ * 
+ */
+// // // // If the email is invalid such as
+/**
+ * {
+  "email":"arjn@gmail.com",
+  "password":"12003123"
+}
+ * 
+ */
+// // // // If the email is invalid then its response is
+/**
+ * 
+ * {
+  "message": "User not exist",
+  "success": false
+}
+ * 
+ */
+// // // // If the password is invalid such as
+/**
+ * {
+  "email":"arjun@gmail.com",
+  "password":"1003123"
+}
+ * 
+ */
+// // // // If the password is invalid then its response is
+/**
+ * 
+ * {
+  "message": "Invalid Credentials",
+  "success": false
+}
+ * 
+ */
