@@ -10,7 +10,7 @@ import {
 
 const AuthForm = () => {
   const [isLogIn, setIsLogIn] = useState(true); // True, you will see Login Page;
-  //const [isLogIn, setIsLogIn] = useState(false); // False, you will see Signup Page;
+
   return (
     <>
       <div className="container d-flex justify-content-center align-items-center vh-100">
@@ -29,18 +29,21 @@ const AuthForm = () => {
           <hr />
           <form>
             {/* Starting of Name Input */}
-            <div className="mb-3 input-group">
-              <span className="input-group-text">
-                <FaUser className="text-primary" />
-              </span>
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter your name"
-                required
-                className="form-control"
-              />
-            </div>
+            {/* Showing the name input field in Sign-Up page not on Log-In page by conditional rendering of not isLogin (!isLogIn)*/}
+            {!isLogIn && (
+              <div className="mb-3 input-group">
+                <span className="input-group-text">
+                  <FaUser className="text-primary" />
+                </span>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name"
+                  required
+                  className="form-control"
+                />
+              </div>
+            )}
             {/* Ending of Name Input */}
             {/* Starting of Email Input */}
             <div className="mb-3 input-group">
