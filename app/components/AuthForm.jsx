@@ -88,7 +88,7 @@ const AuthForm = () => {
               className="text-center mt-3 text-primary"
               style={{ cursor: "pointer" }}
             >
-              Create an account | Already have an account
+              {isLogIn ? "Create an account" : "Already have an account"}
             </p>
             {/* Ending of Para */}
           </form>
