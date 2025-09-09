@@ -29,7 +29,7 @@ const AuthForm = () => {
           <hr />
           <form>
             {/* Starting of Name Input */}
-            {/* Showing the name input field in Sign-Up page not on Log-In page by conditional rendering of not isLogin (!isLogIn)*/}
+            {/* Showing the name input field in Sign-Up page not on Log-In page by AND Operator of not isLogin (!isLogIn)*/}
             {!isLogIn && (
               <div className="mb-3 input-group">
                 <span className="input-group-text">
@@ -74,8 +74,13 @@ const AuthForm = () => {
             </div>
             {/* Ending of Password Input */}
             {/* Starting of Button */}
-            <button type="submit" className="btn w-100">
-              Login & Signup
+            <button
+              type="submit"
+              className={`btn w-100 ${
+                isLogIn ? "btn btn-primary" : "btn btn-success"
+              }`}
+            >
+              {isLogIn ? "Login" : "Signup"}
             </button>
             {/* Ending of Button */}
             {/* Starting of Para */}
