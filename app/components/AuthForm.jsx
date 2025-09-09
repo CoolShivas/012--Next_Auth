@@ -87,6 +87,7 @@ const AuthForm = () => {
             <p
               className="text-center mt-3 text-primary"
               style={{ cursor: "pointer" }}
+              onClick={() => setIsLogIn(!isLogIn)}
             >
               {isLogIn ? "Create an account" : "Already have an account"}
             </p>
