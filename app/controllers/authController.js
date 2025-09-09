@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import User from "../Models/User";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 // // // // // Register the User to save the data on database;
 export const register = async (request) => {
@@ -96,9 +97,13 @@ export const login = async (request) => {
           success: false,
         });
       } else {
+        // // // // Use of web token for user identification with the help of jwt token;
+        const token = jwt.sign({ id: user._id }, "!@#", { expiresIn: "1d" });
+
         return NextResponse.json({
           message: `Welcome back ${user.name}`,
           user,
+          token,
         });
       }
     }
@@ -130,6 +135,8 @@ export const login = async (request) => {
     "updatedAt": "2025-09-09T06:51:51.685Z",
     "__v": 0
   }
+}
+   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YmZjZTg3MzdkYTRmYTc1NDIzODQ4NSIsImlhdCI6MTc1NzQxMDE0NSwiZXhwIjoxNzU3NDk2NTQ1fQ.OIB6QHyn9TntUhU1hVa54wgUC2WrgXdMCAElbU5P4PY"
 }
  * 
  */
