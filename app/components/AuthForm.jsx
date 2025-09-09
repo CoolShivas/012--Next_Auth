@@ -9,7 +9,17 @@ import {
 } from "react-icons/fa";
 
 const AuthForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [isLogIn, setIsLogIn] = useState(true); // True, you will see Login Page;
+
+  const handlerOnChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+    console.log("Getting the input field data", formData); // // Getting data on browser console;
+  };
 
   return (
     <>
@@ -41,6 +51,8 @@ const AuthForm = () => {
                   placeholder="Enter your name"
                   required
                   className="form-control"
+                  value={formData.name}
+                  onChange={handlerOnChange}
                 />
               </div>
             )}
@@ -56,6 +68,8 @@ const AuthForm = () => {
                 placeholder="Enter your email"
                 required
                 className="form-control"
+                value={formData.email}
+                onChange={handlerOnChange}
               />
             </div>
             {/* Ending of Email Input */}
@@ -70,6 +84,8 @@ const AuthForm = () => {
                 placeholder="Enter your password"
                 required
                 className="form-control"
+                value={formData.password}
+                onChange={handlerOnChange}
               />
             </div>
             {/* Ending of Password Input */}
