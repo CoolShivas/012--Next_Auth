@@ -5,7 +5,7 @@ const connectDB = async () => {
     await mongoose.connect(
       "mongodb+srv://shivas2710cool00_db_user:RnpVAk0nkDN5Dl8f@cluster0.hrjwknd.mongodb.net/",
       {
-        dbName: "NextJS_Authen_App",
+        dbName: "NextJS_Authentication_App",
       }
     );
     console.log("MongoDB connected successfully..!");
